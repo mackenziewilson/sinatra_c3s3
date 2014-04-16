@@ -31,6 +31,14 @@ get '/rsvps' do
 
   # TODO categorise rsvps into acceptances/rejections and count them
 
-
+  @rsvps.each do |response|
+    if response[1]=="yes"
+      @acceptances << response
+      @acceptance_count = @acceptance_count + 1
+    else
+      @rejections << response
+      @rejection_count = @rejection_count + 1
+    end
+  end
   erb :rsvps
 end
